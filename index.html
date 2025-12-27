@@ -1,30 +1,619 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Jewellery Store</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    body { font-family: Arial; margin:0; padding:0; }
-    header { background:#c89b3c; color:white; padding:15px; text-align:center; }
-    .product { border:1px solid #ddd; margin:15px; padding:15px; }
-    button { background:green; color:white; padding:10px; border:none; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZOGGER | Handcrafted Luxury Jewelry</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+:root { 
+    --teal: #00332e; 
+    --maroon: #631018; 
+    --bg-cream: #fafafa;
+    --font-main: 'Montserrat', sans-serif;
+    --font-luxury: 'Playfair Display', serif;
+}
+
+/* 1. Global Reset & Spacing */
+body { 
+    font-family: var(--font-main); 
+    background-color: #fff; 
+    color: #222; 
+    overflow-x: hidden; 
+}
+
+/* Uniform spacing for every section */
+.section-padding { 
+    padding: 80px 0; 
+}
+
+/* 2. Header & Navigation */
+.brand-logo { 
+    font-family: var(--font-luxury); 
+    font-size: 3rem; 
+    font-weight: 700; 
+    color: var(--teal); 
+    text-decoration: none; 
+    letter-spacing: 4px; 
+}
+.nav-link { 
+    font-size: 13px; 
+    letter-spacing: 1.5px; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    color: #333 !important; 
+    padding: 12px 20px !important; 
+}
+
+/* 3. Hero Section */
+.hero-section { position: relative; height: 75vh; width: 100%; }
+#bg-video { width: 100%; height: 100%; object-fit: cover; }
+.hero-overlay { 
+    position: absolute; top:0; left:0; width:100%; height:100%; 
+    background: rgba(0,0,0,0.25); 
+    display: flex; align-items: center; justify-content: center; 
+    color: white; text-align: center;
+}
+.hero-title { font-family: var(--font-luxury); font-size: clamp(2.5rem, 5vw, 4rem); }
+
+/* 4. Section Headers (Titles) */
+.section-header { margin-bottom: 50px; text-align: center; }
+.section-header h4 { 
+    font-family: var(--font-luxury); 
+    font-size: 2.2rem; 
+    color: var(--teal); 
+    text-transform: uppercase; 
+    letter-spacing: 2px;
+}
+.section-header hr { 
+    width: 60px; height: 3px; 
+    background: var(--maroon); 
+    margin: 15px auto; 
+    opacity: 1; border: none; 
+}
+
+/* 5. Circular Category Slider */
+.category-slider { margin: 0 -10px; } /* Fixes slider side-margins */
+.cat-item { padding: 0 10px; text-align: center; outline: none; }
+.cat-item img { 
+    width: 155px; height: 155px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto; 
+    border: 1px solid #eee; 
+    transition: 0.4s; 
+    display: block;
+}
+.cat-item:hover img { transform: scale(1.05); border-color: var(--maroon); }
+.cat-item p { margin-top: 15px; font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+/* 6. Collection Cards (Rectangular) */
+.coll-card { position: relative; overflow: hidden; border-radius: 4px; }
+.coll-card img { width: 100%; height: 400px; object-fit: cover; transition: 1s ease; }
+.coll-card:hover img { transform: scale(1.1); }
+.coll-label { 
+    position: absolute; bottom: 0; width: 100%; 
+    background: rgba(255, 255, 255, 0.95); 
+    color: var(--teal); padding: 15px; 
+    font-size: 13px; font-weight: 700; letter-spacing: 1px; 
+    text-align: center;
+}
+
+/* 7. Wedding Circles */
+.wedding-circle { 
+    width: 220px; height: 220px; 
+    border-radius: 50%; 
+    overflow: hidden; 
+    margin: 0 auto 20px; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05); 
+}
+.wedding-circle img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.wedding-circle:hover img { transform: scale(1.1); }
+
+/* 8. Discount Boxes */
+.disc-item { 
+    height: 160px; 
+    display: flex; flex-direction: column; 
+    justify-content: center; align-items: center; 
+    color: white; text-decoration: none; 
+    transition: 0.3s; 
+}
+.disc-item:hover { transform: translateY(-5px); filter: brightness(1.1); }
+.bg-teal { background-color: var(--teal); }
+.bg-maroon { background-color: var(--maroon); }
+
+
+/* Newsletter Section */
+.newsletter-section {
+    background-color: #e9e9e9;
+    padding: 60px 0;
+}
+.newsletter-box {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    background: white;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+.newsletter-box input {
+    border: none;
+    padding: 10px 15px;
+    flex-grow: 1;
+    outline: none;
+}
+.newsletter-box button {
+    background: white;
+    border: none;
+    border-left: 1px solid #ccc;
+    padding: 0 25px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--maroon);
+    color: white;
+    padding: 60px 0 20px;
+    font-size: 13px;
+}
+footer h6 {
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+footer ul li {
+    margin-bottom: 10px;
+}
+footer ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: 0.3s;
+}
+footer ul li a:hover {
+    color: white;
+}
+.contact-info i {
+    width: 25px;
+}
+
+/* Trust Features Banner */
+.features-banner {
+    background-color: #fff;
+    padding: 60px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+.feature-item {
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+}
+/* Creating the vertical divider line */
+.feature-item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 10%;
+    height: 80%;
+    width: 1px;
+    background-color: #ddd;
+}
+.feature-item i {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+    display: block;
+}
+.feature-item p {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #333;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+/* Mobile Fix: Hide dividers on small screens */
+@media (max-width: 768px) {
+    .feature-item:not(:last-child)::after { display: none; }
+    .feature-item { margin-bottom: 40px; }
+}
+
+
+/* Fix Slider Navigation Arrows */
+.category-slider {
+    position: relative;
+    padding: 0 40px; /* Creates space for arrows so they don't overlap images */
+}
+
+/* Style the buttons */
+.slick-prev, .slick-next {
+    font-size: 0; /* Hides the "Previous" & "Next" text */
+    line-height: 0;
+    position: absolute;
+    top: 40%; /* Centers arrows vertically against the circles */
+    display: block;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: transparent;
+    z-index: 10;
+}
+
+/* Create the Arrow Icons using FontAwesome or Unicode */
+.slick-prev:before, .slick-next:before {
+    font-family: "Font Awesome 6 Free"; /* Ensure FontAwesome is linked */
+    font-weight: 900;
+    font-size: 24px;
+    color: #333; /* Dark color for visibility */
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.slick-prev:before { content: "\f104"; } /* Left Arrow icon */
+.slick-next:before { content: "\f105"; } /* Right Arrow icon */
+
+.slick-prev:hover:before, .slick-next:hover:before { opacity: 1; color: var(--maroon); }
+
+.slick-prev { left: 0; }
+.slick-next { right: 0; }
+
+/* Adjust spacing for mobile */
+@media (max-width: 768px) {
+    .category-slider { padding: 0 20px; }
+    .slick-prev, .slick-next { display: none !important; } /* Optional: Hide arrows on mobile for swipe only */
+}
+
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>Radhika Store</h1>
-  <p>Trendy & Affordable Jewellery</p>
+<header class="bg-white sticky-top">
+    <div class="container text-center pt-0 pb-2">
+        <a href="#" class="brand-logo">ZOGGER</a>
+    </div>
+    <nav class="navbar navbar-expand-lg py-0">
+        <div class="container justify-content-center border-top border-bottom">
+            <ul class="navbar-nav align-items-center">
+                <li class="nav-item"><a class="nav-link" href="#">New Arrivals</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Collections</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Bridal</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="#">Sale</a></li>
+            </ul>
+        </div>
+    </nav>
 </header>
 
-<div class="product">
-  <h3>Gold Plated Earrings</h3>
-  <p>Price: ₹699</p>
-  <a href="https://wa.me/91XXXXXXXXXX">
-    <button>Order on WhatsApp</button>
-  </a>
-</div>
+<section id="categories" class="section-padding">
+    <div class="container">
+        <div class="category-slider text-center">
+            <div class="cat-item">
+                <div style="width:160px; height:160px; background:var(--maroon); border-radius:50%; display:flex; align-items:center; justify-content:center; color:white; flex-direction:column; margin:0 auto;">
+                    <span style="font-size:10px; letter-spacing:1px;">UP TO</span>
+                    <h2 class="m-0 fw-bold">70%</h2>
+                </div>
+                <p class="mt-3">Annual Sale</p>
+            </div>
 
+            <div class="cat-item">
+                <img src="assets/img/nec.webp" alt="Necklaces">
+                <p class="mt-3">Necklace Sets</p>
+            </div>
+            <div class="cat-item">
+                <img src="assets/img/ear.webp" alt="Earrings">
+                <p class="mt-3">Earring Designs</p>
+            </div>
+            <div class="cat-item">
+                <img src="assets/img/bangle.webp" alt="Bangles">
+                <p class="mt-3">Bangles</p>
+            </div>
+            <div class="cat-item">
+                <img src="assets/img/longhar.webp" alt="Long Necklaces">
+                <p class="mt-3">Long Necklaces</p>
+            </div>
+			            <div class="cat-item">
+                <img src="assets/img/ring.webp" alt="Ring">
+                <p class="mt-3">Ring</p>
+            </div>
+			            <div class="cat-item">
+                <img src="assets/img/hair.webp" alt="Hair">
+                <p class="mt-3">Hair Accesssories</p>
+            </div>
+            </div>
+    </div>
+</section>
+<section class="hero-section">
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/img/vdeo.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay">
+        <div>
+            <h1 class="hero-title">Divine Elegance</h1>
+            <p class="text-uppercase" style="letter-spacing: 4px; font-weight: 300;">Handcrafted Heritage Jewelry</p>
+            <button class="btn btn-outline-light rounded-0 px-5 py-2 mt-3">SHOP NOW</button>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="features-banner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-4 feature-item">
+                <i class="fa-solid fa-hands-holding-circle"></i> <p>Handcrafted by the<br>Best Artisans</p>
+            </div>
+            
+            <div class="col-md-4 feature-item">
+                <i class="fa-solid fa-gears"></i> <p>Customization On<br>Demand</p>
+            </div>
+            
+            <div class="col-md-4 feature-item">
+                <i class="fa-solid fa-box-open"></i> <p>14 Days Express<br>Returns</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="discounts" class="section-padding bg-light">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h4 class="fw-bold text-uppercase">Shop by Discount</h4>
+            <hr style="width:50px; border-top:2px solid var(--maroon); margin:10px auto; opacity:1;">
+        </div>
+        <div class="row g-2">
+            <div class="col-6 col-md-3">
+                <a href="#" class="disc-item bg-teal">
+                    <span class="small opacity-75">SHOP</span>
+                    <h2 class="fw-bold m-0">70% OFF</h2>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="disc-item bg-maroon">
+                    <span class="small opacity-75">SHOP</span>
+                    <h2 class="fw-bold m-0">50% OFF</h2>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="disc-item bg-teal">
+                    <span class="small opacity-75">SHOP</span>
+                    <h2 class="fw-bold m-0">30% OFF</h2>
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#" class="disc-item bg-maroon">
+                    <span class="small opacity-75">SHOP</span>
+                    <h2 class="fw-bold m-0">20% OFF</h2>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container text-center">
+        <div class="section-header">
+            <h4>Our Collections</h4>
+            <hr>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/antii.webp">
+                    <div class="coll-label">ANTIQUE GOLD</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/nakshh.webp">
+                    <div class="coll-label">NAKSHATRA CZ</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/kundann.webp">
+                    <div class="coll-label">KUNDAN</div>
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/bridall.webp">
+                    <div class="coll-label">BRIDAL</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-cream">
+    <div class="container text-center">
+        <div class="section-header">
+            <h4>Featured Collection</h4>
+            <hr>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/bestshellerr.webp">
+                    <!-- <div class="coll-label">BESTSELLERS</div> -->
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/party.webp">
+                    <!-- <div class="coll-label">PARTY WEAR</div> -->
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/guest.webp">
+                    <!-- <div class="coll-label">WEDDING GUEST</div> -->
+                </div>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="coll-card shadow-sm">
+                    <img src="assets/img/gift.webp">
+                    <!-- <div class="coll-label">HOLIDAY GIFT</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container text-center">
+        <div class="section-header">
+            <h4>Wedding Jewellery</h4>
+            <hr>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-3 col-6">
+                <div class="wedding-circle"><img src="assets/img/receptionn.webp"></div>
+                <h6 class="fw-bold">RECEPTION</h6>
+                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="wedding-circle"><img src="assets/img/mehndi.webp"></div>
+                <h6 class="fw-bold">MEHENDI</h6>
+                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="wedding-circle"><img src="assets/img/haldi.webp"></div>
+                <h6 class="fw-bold">HALDI</h6>
+                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+            </div>
+            <div class="col-md-3 col-6">
+                <div class="wedding-circle"><img src="assets/img/bridalll.webp"></div>
+                <h6 class="fw-bold">BRIDAL</h6>
+                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter-section text-center">
+    <div class="container">
+        <p class="small text-uppercase mb-2">Join the Zogger Club</p>
+        <h3 class="mb-4">Get all the latest updates and exclusive offers.</h3>
+        <div class="newsletter-box">
+            <input type="email" placeholder="Email">
+            <button type="submit">Subscribe</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-3">
+                <h6>Customer Service</h6>
+                <ul>
+                    <li><a href="#">Where's My Order?</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Zogger Rewards</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6>Information</h6>
+                <ul>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Warranty Information</a></li>
+                    <li><a href="#">Jewelry Care & Repairs</a></li>
+                    <li><a href="#">Blogs</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6>Company</h6>
+                <ul>
+                  
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Retail Stores</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h6>Contact Us</h6>
+                <div class="contact-info mb-3">
+                    <p class="mb-1 small"><i class="fas fa-phone"></i> Reach out to us Mon - Sat (10 AM - 7 PM)</p>
+                    <p class="fw-bold">+91 813 087 8434</p>
+                </div>
+                <div class="contact-info mb-3">
+                    <p class="mb-1 small"><i class="fab fa-whatsapp"></i> Reach out to us Mon - Sat (10 AM - 7 PM)</p>
+                    <p class="fw-bold">+91 813 087 8434</p>
+                </div>
+                <div class="contact-info">
+                    <p class="mb-1 small">Email Us at</p>
+                    <p class="fw-bold">support@zogger.com</p>
+                </div>
+            </div>
+        </div>
+        
+        <hr class="mt-5 mb-4" style="border-color: rgba(255,255,255,0.1);">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="small mb-0">© 2026, Zogger India.</p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <div class="fs-5 d-flex gap-3 justify-content-md-end">
+                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.category-slider').slick({
+            slidesToShow: 5,
+            infinite: true,
+            autoplay: true,
+            arrows: true,
+            responsive: [{ breakpoint: 768, settings: { slidesToShow: 2 } }]
+        });
+    });
+	
+	
+$('.category-slider').slick({
+    slidesToShow: 5,
+    slidesToScroll: 1,
+    infinite: true,
+    autoplay: true,
+    arrows: true, // This must be true
+    dots: false,  // Set to true if you want the small dots at the bottom
+    responsive: [
+        {
+            breakpoint: 1024,
+            settings: { slidesToShow: 3 }
+        },
+        {
+            breakpoint: 600,
+            settings: { slidesToShow: 2 }
+        }
+    ]
+});
+</script>
 </body>
 </html>
-

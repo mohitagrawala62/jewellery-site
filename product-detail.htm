@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | Tarinika Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --gold: #b08d57; --dark-green: #00332e; }
+        body { font-family: 'Poppins', sans-serif; background-color: #fdfdfd; }
+        
+        /* Product Image Gallery */
+        .main-img { width: 100%; border-radius: 8px; border: 1px solid #eee; }
+        .thumb-img { width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 1px solid #ddd; margin-right: 10px; border-radius: 4px; }
+        .thumb-img:hover { border-color: var(--gold); }
+
+        /* Pricing and Buttons */
+        .price-tag { font-size: 28px; color: var(--dark-green); font-weight: 700; margin: 15px 0; }
+        .btn-buy-now { background-color: var(--dark-green); color: white; padding: 15px; width: 100%; font-weight: 600; border: none; transition: 0.3s; }
+        .btn-buy-now:hover { background-color: #004d46; color: white; }
+        .whatsapp-btn { background-color: #25d366; color: white; padding: 15px; width: 100%; font-weight: 600; display: block; text-align: center; text-decoration: none; margin-top: 10px; border-radius: 5px; }
+        
+        .product-meta { font-size: 14px; color: #666; margin-top: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="https://via.placeholder.com/600x700" id="mainProductImg" class="main-img mb-3" alt="Jewelry">
+            <div class="d-flex">
+                <img src="https://via.placeholder.com/150" class="thumb-img" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/151" class="thumb-img" onclick="changeImage(this.src)">
+                <img src="https://via.placeholder.com/152" class="thumb-img" onclick="changeImage(this.src)">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Antique Necklace</li>
+                </ol>
+            </nav>
+
+            <h1 class="fw-bold" id="productName">Antique Gold-Plated Grand Necklace</h1>
+            <p class="text-muted">SKU: TR-1092-AG</p>
+            
+            <div class="price-tag">$145.00 <span class="text-decoration-line-through fs-6 text-muted">$190.00</span></div>
+            
+            <p class="product-description">
+                Elevate your bridal look with this handcrafted masterpiece. Featuring intricate peacock motifs and premium kempu stones, this necklace set is perfect for weddings and festive occasions.
+            </p>
+
+            <div class="my-4">
+                <label class="fw-bold mb-2">Quantity:</label>
+                <input type="number" value="1" min="1" class="form-control w-25">
+            </div>
+
+            <button class="btn btn-buy-now mb-2" onclick="processPayment()">ADD TO CART</button>
+            
+            <a href="#" id="waLink" class="whatsapp-btn">
+                <i class="fab fa-whatsapp me-2"></i> INQUIRY ON WHATSAPP
+            </a>
+
+            <div class="product-meta">
+                <p><i class="fa fa-truck me-2"></i> Free Shipping on orders over $100</p>
+                <p><i class="fa fa-undo me-2"></i> 7-Day Easy Return Policy</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Image Switcher Logic
+    function changeImage(src) {
+        document.getElementById('mainProductImg').src = src;
+    }
+
+    // WhatsApp Gateway Logic
+    const productName = document.getElementById('productName').innerText;
+    const phone = "919876543210"; // Replace with your number
+    const waMessage = `Hello! I am interested in buying: ${productName}. Please provide availability and payment options.`;
+    document.getElementById('waLink').href = `https://wa.me/${phone}?text=${encodeURIComponent(waMessage)}`;
+
+    // Payment Gateway Placeholder
+    function processPayment() {
+        alert("This would typically redirect to Stripe, PayPal, or Razorpay for secure checkout.");
+    }
+</script>
+
+</body>
+</html>
