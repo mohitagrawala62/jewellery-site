@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | ZOGGER Luxury Jewelry</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+            :root { --gold: #b08d57; --maroon: #631018; --dark-green: #00332e; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #fdfdfd; }
+        
+        /* Header Styling */
+        .navbar-brand { font-family: 'Playfair Display', serif; color: var(--maroon) !important; font-size: 28px; letter-spacing: 2px; }
+        .nav-link { font-size: 13px; font-weight: 600; color: #333 !important; }
+
+        /* Product Image Gallery */
+        .main-img { width: 100%; border-radius: 8px; border: 1px solid #eee; }
+        .thumb-img { width: 80px; height: 80px; object-fit: cover; cursor: pointer; border: 1px solid #ddd; margin-right: 10px; border-radius: 4px; transition: 0.3s; }
+        .thumb-img:hover { border-color: var(--maroon); }
+
+        /* Pricing and Buttons */
+        .price-tag { font-size: 32px; color: var(--maroon); font-weight: 700; font-family: 'Playfair Display', serif; }
+        .btn-buy-now { background-color: var(--maroon); color: white; padding: 15px; width: 100%; font-weight: 600; border: none; transition: 0.3s; border-radius: 0; }
+        .btn-buy-now:hover { background-color: #4a0b12; color: white; }
+        
+        /* Floating Social Icons */
+        .social-float-container { position: fixed; bottom: 30px; right: 30px; display: flex; flex-direction: column; gap: 15px; z-index: 9999; }
+        .social-float-btn { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; color: white; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.2); transition: 0.3s; }
+        .social-float-btn.whatsapp { background-color: #25d366; }
+        .social-float-btn.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+        .social-float-btn:hover { transform: scale(1.1); color: white; }
+
+nav-link {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #333 !important;
+}
+.nav-link.active {
+    color: var(--maroon) !important;
+}
+.navbar {
+    padding: 15px 0;
+}
+/* Footer Link Hover Effects */
+footer a:hover {
+    color: #fff !important;
+    text-decoration: underline !important;
+}
+/* Container for the floating buttons */
+.social-float-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the two buttons */
+    z-index: 9999;
+}
+
+/* Base style for both buttons */
+.social-float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Individual Colors */
+.social-float-btn.whatsapp {
+    background-color: #25d366;
+}
+
+.social-float-btn.instagram {
+    /* Premium Instagram Gradient */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+/* Hover Effects */
+.social-float-btn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Sliding labels that appear on hover */
+.float-label {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.social-float-btn:hover .float-label {
+    opacity: 1;
+    visibility: visible;
+    right: 65px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .social-float-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .social-float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    /* Hide labels on mobile to keep it clean */
+    .float-label { display: none; }
+}
+
+/* --- Fix for Main Product Image --- */
+#mainProductImg {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Forces square; change to 4/5 for portrait */
+    object-fit: cover;   /* Centers and crops without stretching */
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    display: block;
+}
+
+/* --- Fix for Thumbnail Gallery --- */
+.thumb-img {
+    width: 80px; 
+    height: 80px;        /* Fixed height */
+    aspect-ratio: 1 / 1; /* Forced square */
+    object-fit: cover;   /* Crops thumbnail perfectly */
+    cursor: pointer;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    border-radius: 4px;
+    transition: 0.3s;
+}
+
+.thumb-img:hover {
+    border-color: var(--maroon);
+    transform: translateY(-2px);
+}
+
+/* Ensuring the gallery container looks clean */
+.d-flex.mt-3 {
+    gap: 5px;
+    overflow-x: auto; /* Allows scrolling on mobile if many thumbs */
+    padding-bottom: 5px;
+}
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html" style="font-family: 'Playfair Display'; font-size: 24px; color: var(--dark-green);">
+            ZOGGER
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link px-3" href="../../index.html">HOME</a></li>
+                <li class="nav-item"><a class="nav-link px-3 " href="../../new_arrival.html">NEW ARRIVALS</a></li>
+                <li class="nav-item"><a class="nav-link px-3 active" href="../../collection.html">COLLECTIONS</a></li>
+				<li class="nav-item"><a class="nav-link px-3" href="../../comming_soon.html">BRIDAL</a></li>
+				<li class="nav-item"><a class="nav-link text-danger" href="../../sale.html">SALE</a></li>
+            </ul>
+            
+
+        </div>
+    </div>
+</nav>
+
+<div class="container py-5">
+    <div class="row">
+<div class="col-md-6">
+<img src="../img/ns1111.jpeg" id="mainProductImg" class="main-img mb-3" alt="Jewelry">
+<div class="d-flex mt-2">
+<img src="../img/ns1.jpeg" class="thumb-img" onclick="changeImage(this.src)">
+<img src="../img/ns11.jpeg" class="thumb-img" onclick="changeImage(this.src)">
+<img src="../img/ns1111.jpeg" class="thumb-img" onclick="changeImage(this.src)">
+<img src="../img/ns111.jpeg" class="thumb-img" onclick="changeImage(this.src)">
+</div>
+</div>
+
+        <div class="col-md-6">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="font-size: 12px;">
+                    <li class="breadcrumb-item"><a href="../../index.html" class="text-decoration-none text-muted">Home</a></li>
+                    <li class="breadcrumb-item active">Product Details</li>
+                </ol>
+            </nav>
+
+            <h1 class="fw-bold" id="productName" style="font-family: 'Playfair Display';">Cira Antique Necklace Set</h1>
+            <p class="text-muted small">SKU: ZG-1092-ANTQ</p>
+            
+            <div class="price-tag mb-3">&#8377; 549.00 <span class="text-decoration-line-through fs-6 text-muted"> &#8377; 1099.00</span></div>
+            
+            <p class="product-description text-muted">
+                Cira Antique Necklace Set features a bold and beautiful jewelry design that is sure to impress. Crafted with high-quality CZ stones, it's Indian jewelry made for special functions, wedding events and festivals.
+            </p>
+
+            <div class="my-4">
+                <label class="fw-bold mb-2 small">QUANTITY:</label>
+                <input type="number" value="1" min="1" class="form-control w-25 rounded-0">
+            </div>
+
+            <button class="btn btn-buy-now mb-4" onclick="processPayment()">ADD TO CART</button>
+			<button class="btn btn-buy-now mb-4" onclick="redirectToWhatsAppPayment()">
+    <i class="fa fa-shopping-cart me-2"></i> BUY NOW VIA WHATSAPP
+</button>
+            
+            <div class="product-meta border-top pt-3">
+                <p class="small mb-1"><i class="fa fa-truck me-2 text-success"></i> Free Shipping on orders over &#8377; 1000</p>
+                <p class="small mb-1"><i class="fa fa-undo me-2 text-primary"></i> 7-Day Easy Return Policy</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="social-float-container">
+    <a href="https://www.instagram.com/zogger_jewellers?igsh=OHJveXM0cTY5YXhv" class="social-float-btn instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/9211214942" id="waLink" class="social-float-btn whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+<script>
+    function changeImage(src) {
+        document.getElementById('mainProductImg').src = src;
+    }
+
+    // Dynamic WhatsApp Link
+    const pName = document.getElementById('productName').innerText;
+    const phone = "9211214942";
+    const waMessage = `Hello Zogger! I am interested in: ${pName}. Is it available?`;
+    document.getElementById('waLink').href = `https://wa.me/${phone}?text=${encodeURIComponent(waMessage)}`;
+
+    function processPayment() {
+        alert("Redirecting to secure checkout...");
+    }
+	
+
+    // Image Switcher Logic
+    function changeImage(src) {
+        document.getElementById('mainProductImg').src = src;
+    }
+
+    // WhatsApp Payment / Order Logic
+    function redirectToWhatsAppPayment() {
+        const phone = "9211214942"; // REPLACE WITH YOUR REAL NUMBER
+        
+        // Get Product Details
+        const productName = document.getElementById('productName').innerText;
+        const priceText = document.querySelector('.price-tag').innerText.split(' ')[0]; // Gets "&#8377; 549.00"
+        const quantity = document.querySelector('input[type="number"]').value;
+        const productUrl = window.location.href; // Captures current page link
+        
+        // Create professional message
+        const message = `*NEW ORDER REQUEST* 🛍️%0A%0A` +
+                        `*Product:* ${productName}%0A` +
+                        `*Price:* ${priceText}%0A` +
+                        `*Quantity:* ${quantity}%0A%0A` +
+                        `*Link:* ${productUrl}%0A%0A` +
+                        `Please share payment details (UPI/Bank Transfer) to confirm my order.`;
+
+        // Redirect to WhatsApp
+        window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
+    }
+</script>
+
+
+
+
+<footer class="text-white pt-5 pb-3 mt-5" style="background-color: #631018 !important; border-top: 4px solid #b08d57;">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <h4 class="fw-bold mb-4" style="font-family: 'Playfair Display'; color: #fff; letter-spacing: 2px;">ZOGGER</h4>
+                <p class="small" style="color: rgba(255,255,255,0.8);">
+                    Crafting timeless elegance since 2026.<br>Our jewelry is handcrafted with passion and precision to celebrate your most precious moments.
+                </p>
+                <div class="social-links mt-4">
+                    <a href="https://www.instagram.com/zogger_jewellers?igsh=OHJveXM0cTY5YXhv" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9211214942?text=Hi%20Zogger!" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-md-6">
+                <!-- <h6 class="text-uppercase fw-bold mb-4 small" style="color: #b08d57;">Shop By</h6> -->
+                <!-- <ul class="list-unstyled small"> -->
+                    <!-- <li class="mb-2"><a href="new-arrivals.html" class="text-white-50 text-decoration-none hover-white">New Arrivals</a></li> -->
+                    <!-- <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Necklace Sets</a></li> -->
+                    <!-- <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Earrings</a></li> -->
+                    <!-- <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Bangles</a></li> -->
+                <!-- </ul> -->
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="text-uppercase fw-bold mb-4 small" style="color: #b08d57;">Support</h6>
+                <ul class="list-unstyled small">
+                    <li class="mb-2"><a href="contact.html" class="text-white-50 text-decoration-none hover-white">Contact Us</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Shipping Policy</a></li>
+                    <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none hover-white">Returns & Exchanges</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+                <h6 class="text-uppercase fw-bold mb-4 small" style="color: #b08d57;">Newsletter</h6>
+                <p class="small text-white-50">Join our inner circle for exclusive offers.</p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control rounded-0 bg-transparent border-white text-white small" placeholder="Your Email" style="border-color: rgba(255,255,255,0.3) !important;">
+                    <button class="btn btn-outline-light rounded-0" type="button">JOIN</button>
+                </div>
+            </div>
+        </div>
+
+        <hr class="my-4" style="border-color: rgba(255,255,255,0.1);">
+        
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="small mb-0 text-white-50">&copy; 2026 ZOGGER Jewelry. All Rights Reserved.</p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+<style>
+    .hover-white:hover { color: white !important; transition: 0.3s; }
+	@media (max-width: 768px) {
+    /* Moves the floating buttons up slightly so they don't cover footer text */
+    .social-float-container {
+        bottom: 80px; 
+    }
+}
+</style>
+</body>
+</html>
