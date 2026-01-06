@@ -1,0 +1,27 @@
+[
+  {
+    "id": "NK-001",
+    "title": "Cira Antique Necklace Set",
+    "price": 4919,
+    "mrp": 6149,
+    "currency": "INR",
+    "images": ["assets/img/products/cira-1.jpg"],
+    "category": "Necklace Sets",
+    "tags": ["antique", "bridal"],
+    "featured": true,
+    "inStock": true
+  },
+  {
+    "id": "BG-002",
+    "title": "Classic Two-Layer Antique Bangles",
+    "price": 2911,
+    "mrp": 3639,
+    "currency": "INR",
+    "images": ["assets/img/products/bangles-2.jpg"],
+    "category": "Bangles",
+    "tags": ["antique"],
+    "featured": true,
+    "inStock": true,
+    "sizes": ["2.4", "2.6", "2.8"]
+  }
+]
