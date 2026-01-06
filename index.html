@@ -281,6 +281,88 @@ footer ul li a:hover {
     .slick-prev, .slick-next { display: none !important; } /* Optional: Hide arrows on mobile for swipe only */
 }
 
+
+/* Container for the floating buttons */
+.social-float-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between the two buttons */
+    z-index: 9999;
+}
+
+/* Base style for both buttons */
+.social-float-btn {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+/* Individual Colors */
+.social-float-btn.whatsapp {
+    background-color: #25d366;
+}
+
+.social-float-btn.instagram {
+    /* Premium Instagram Gradient */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+/* Hover Effects */
+.social-float-btn:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Sliding labels that appear on hover */
+.float-label {
+    position: absolute;
+    right: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.social-float-btn:hover .float-label {
+    opacity: 1;
+    visibility: visible;
+    right: 65px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .social-float-container {
+        bottom: 20px;
+        right: 20px;
+    }
+    .social-float-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+    }
+    /* Hide labels on mobile to keep it clean */
+    .float-label { display: none; }
+}
+
+
     </style>
 </head>
 <body>
@@ -292,10 +374,10 @@ footer ul li a:hover {
     <nav class="navbar navbar-expand-lg py-0">
         <div class="container justify-content-center border-top border-bottom">
             <ul class="navbar-nav align-items-center">
-                <li class="nav-item"><a class="nav-link" href="#">New Arrivals</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Collections</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Bridal</a></li>
-                <li class="nav-item"><a class="nav-link text-danger" href="#">Sale</a></li>
+                <li class="nav-item"><a class="nav-link" href="new_arrival.html">New Arrivals</a></li>
+                <li class="nav-item"><a class="nav-link" href="collection.html">Collections</a></li>
+                <li class="nav-item"><a class="nav-link" href="comming_soon.html">Bridal</a></li>
+                <li class="nav-item"><a class="nav-link text-danger" href="sale.html">Sale</a></li>
             </ul>
         </div>
     </nav>
@@ -313,27 +395,27 @@ footer ul li a:hover {
             </div>
 
             <div class="cat-item">
-                <img src="assets/img/nec.webp" alt="Necklaces">
+                <a href="necklace.html"><img src="assets/img/nec.webp" alt="Necklaces"></a>
                 <p class="mt-3">Necklace Sets</p>
             </div>
             <div class="cat-item">
-                <img src="assets/img/ear.webp" alt="Earrings">
+                <a href="comming_soon.html"><img src="assets/img/ear.webp" alt="Earrings"></a>
                 <p class="mt-3">Earring Designs</p>
             </div>
             <div class="cat-item">
-                <img src="assets/img/bangle.webp" alt="Bangles">
+                <a href="bangle.html"><img src="assets/img/bangle.webp" alt="Bangles"></a>
                 <p class="mt-3">Bangles</p>
             </div>
             <div class="cat-item">
-                <img src="assets/img/longhar.webp" alt="Long Necklaces">
+                <a href="comming_soon.html"><img src="assets/img/longhar.webp" alt="Long Necklaces"></a>
                 <p class="mt-3">Long Necklaces</p>
             </div>
 			            <div class="cat-item">
-                <img src="assets/img/ring.webp" alt="Ring">
+                <a href="comming_soon.html"><img src="assets/img/ring.webp" alt="Ring"></a>
                 <p class="mt-3">Ring</p>
             </div>
 			            <div class="cat-item">
-                <img src="assets/img/hair.webp" alt="Hair">
+                <a href="comming_soon.html"><img src="assets/img/hair.webp" alt="Hair"></a>
                 <p class="mt-3">Hair Accesssories</p>
             </div>
             </div>
@@ -487,22 +569,22 @@ footer ul li a:hover {
             <div class="col-md-3 col-6">
                 <div class="wedding-circle"><img src="assets/img/receptionn.webp"></div>
                 <h6 class="fw-bold">RECEPTION</h6>
-                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+                <a href="collection.html" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
             </div>
             <div class="col-md-3 col-6">
                 <div class="wedding-circle"><img src="assets/img/mehndi.webp"></div>
                 <h6 class="fw-bold">MEHENDI</h6>
-                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+                <a href="new_arrival.html" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
             </div>
             <div class="col-md-3 col-6">
                 <div class="wedding-circle"><img src="assets/img/haldi.webp"></div>
                 <h6 class="fw-bold">HALDI</h6>
-                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+                <a href="new_arrival.html" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
             </div>
             <div class="col-md-3 col-6">
                 <div class="wedding-circle"><img src="assets/img/bridalll.webp"></div>
                 <h6 class="fw-bold">BRIDAL</h6>
-                <a href="#" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
+                <a href="comming_soon.html" class="text-dark small fw-bold text-decoration-none">SHOP NOW →</a>
             </div>
         </div>
     </div>
@@ -518,46 +600,55 @@ footer ul li a:hover {
         </div>
     </div>
 </section>
-
+<div class="social-float-container">
+    <a href="https://www.instagram.com/zogger_jewellers?igsh=OHJveXM0cTY5YXhv" class="social-float-btn instagram" target="_blank" aria-label="Follow us on Instagram">
+        <i class="fab fa-instagram"></i>
+        <span class="float-label">Follow Us</span>
+    </a>
+    
+    <a href="https://wa.me/9211214942?text=Hi%20Zogger!" class="social-float-btn whatsapp" target="_blank" aria-label="Chat on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span class="float-label">Chat with us</span>
+    </a>
+</div>
 <footer>
     <div class="container">
         <div class="row g-4">
             <div class="col-md-3">
                 <h6>Customer Service</h6>
                 <ul>
-                    <li><a href="#">Where's My Order?</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Zogger Rewards</a></li>
+                    <!-- <li><a href="#">Where's My Order?</a></li> -->
+                    <li><a href="return_policy.html">Returns & Exchanges</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="reward.html">Zogger Rewards</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h6>Information</h6>
                 <ul>
-                    <li><a href="#">Shipping & Delivery</a></li>
-                    <li><a href="#">Warranty Information</a></li>
-                    <li><a href="#">Jewelry Care & Repairs</a></li>
-                    <li><a href="#">Blogs</a></li>
+                    <li><a href="shipping.html">Shipping & Delivery</a></li>
+                    <li><a href="warranty.html">Warranty Information</a></li>
+                    <li><a href="repair.html">Jewelry Care & Repairs</a></li>
+                    
                 </ul>
             </div>
             <div class="col-md-3">
                 <h6>Company</h6>
                 <ul>
                   
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Retail Stores</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="term.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="col-md-3">
                 <h6>Contact Us</h6>
                 <div class="contact-info mb-3">
                     <p class="mb-1 small"><i class="fas fa-phone"></i> Reach out to us Mon - Sat (10 AM - 7 PM)</p>
-                    <p class="fw-bold">+91 813 087 8434</p>
+                    <p class="fw-bold">+91 921 121 4942</p>
                 </div>
                 <div class="contact-info mb-3">
                     <p class="mb-1 small"><i class="fab fa-whatsapp"></i> Reach out to us Mon - Sat (10 AM - 7 PM)</p>
-                    <p class="fw-bold">+91 813 087 8434</p>
+                    <p class="fw-bold">+91 921 121 4942</p>
                 </div>
                 <div class="contact-info">
                     <p class="mb-1 small">Email Us at</p>
@@ -574,8 +665,8 @@ footer ul li a:hover {
             </div>
             <div class="col-md-6 text-md-end">
                 <div class="fs-5 d-flex gap-3 justify-content-md-end">
-                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/zogger_jewellers?igsh=OHJveXM0cTY5YXhv" class="text-white"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/9211214942?text=Hi%20Zogger!" class="text-white"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
         </div>
@@ -616,6 +707,4 @@ $('.category-slider').slick({
 });
 </script>
 </body>
-
 </html>
-
