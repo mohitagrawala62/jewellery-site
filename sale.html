@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <style>
          :root { --maroon: #631018; --dark-green: #00332e; --light-grey: #f9f9f9; }
         body { font-family: 'Montserrat', sans-serif; background-color: #fff; }
@@ -169,6 +169,28 @@ footer a:hover {
     /* This prevents the grid from jumping if one name is longer than another */
     min-height: 90px; 
 }
+
+@media (max-width: 768px) {
+    .social-float-container {
+        bottom: 80px; /* This is good, it keeps them away from the footer/bottom nav */
+    }
+}
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        text-align: center; /* Centers the text of the menu items */
+        padding: 20px 0;    /* Adds space at the top and bottom of the menu */
+    }
+
+    .navbar-nav .nav-item {
+        margin-bottom: 10px; /* Adds vertical space between links */
+    }
+
+    .nav-link {
+        display: inline-block; /* Ensures the click area is focused on the text */
+    }
+}
+
     </style>
 </head>
 <body>
